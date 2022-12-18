@@ -434,6 +434,7 @@ forest_plot <- function(dat,
                         order_subgroups = FALSE, # order subgroups from low to high prevalence
                         show_ind_studies = FALSE, # show individual studies?
                         out_png = NULL, # if specified, path to output png
+                        out_pdf = NULL, # if specified, path to output pdf
                         out_width = 7, # width of output, in inches
                         out_height = 7 # height of output, in inches
 ){
@@ -449,6 +450,8 @@ forest_plot <- function(dat,
   ## open graphics device to save plot
   if (!is.null(out_png)) {
     png(file = out_png, width = out_width, height = out_height, units = "in", res = 300)
+  } else if (!is.null(out_pdf)) {
+    pdf(file = out_pdf, width = out_width, height = out_height)
   }
   
   ## calculate number of subgroups (so that ALL subgroups are plotted, even those with 1 study)
@@ -487,7 +490,7 @@ forest_plot <- function(dat,
   )
   
   ## close graphics device
-  if (!is.null(out_png)) {
+  if (!is.null(out_png) | !is.null(out_pdf)) {
     dev.off()
   }
   

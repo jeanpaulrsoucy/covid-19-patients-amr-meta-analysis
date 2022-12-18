@@ -154,6 +154,10 @@ for (outcome in c("coinfection", "secondary_infection", "bacterial_infection_uns
   forest_plot(forest_calc(dat %>% filter(!is.na(dat[[outcome]])), outcome, "setting", population = "patients_eval"), xmax = 70,
               out_png = paste0("figures/1_plot_1_", outcome, ".png"),
               out_width = 10, out_height = 5)
+  # PDF version of plot
+  forest_plot(forest_calc(dat %>% filter(!is.na(dat[[outcome]])), outcome, "setting", population = "patients_eval"), xmax = 70,
+              out_pdf = paste0("figures/1_plot_1_", outcome, ".pdf"),
+              out_width = 10, out_height = 5)
   
   ## Plot 2: Stratified by age range (Age_Group)
   forest_plot(forest_calc(dat %>% filter(!is.na(dat[[outcome]])), outcome, "Age_Group", population = "patients_eval"), xmax = 35,
