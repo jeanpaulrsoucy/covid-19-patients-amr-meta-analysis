@@ -17,6 +17,10 @@ library(metafor)
 # load functions
 source("funs.R")
 
+# custom p-value formatting in meta::forest
+source("formatPT.R")
+assignInNamespace("formatPT", formatPT, "meta")
+
 # create output directories (if they don't already exist)
 dir.create("figures", showWarnings = FALSE)
 dir.create("tables", showWarnings = FALSE)
